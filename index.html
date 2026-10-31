@@ -30,9 +30,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="stylesheet"
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      />
+    </noscript>
 
     <style>
       /* ============================================================== */
@@ -85,7 +98,9 @@
       html,
       body {
         width: 100%;
-        height: 100vh;
+        height: 100%;
+        height: 100dvh;
+        max-height: 100dvh;
         overflow: hidden; /* ABSOLUTELY ZERO SCROLLBARS */
         background-color: var(--emerald-darkest);
         color: var(--text-cream);
@@ -317,7 +332,7 @@
       }
 
       /* ============================================================== */
-      /* TOP CINEMA HEADER WITH VOCABULARY UNLOCK TRACKER               */
+      /* TOP CINEMA HEADER (ULTRA-CLEAN TITLE ONLY)                    */
       /* ============================================================== */
       .cinema-header {
         position: relative;
@@ -327,7 +342,7 @@
         padding: 0 24px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         border-bottom: 1px solid rgba(212, 175, 55, 0.22);
         background: linear-gradient(180deg, rgba(3, 14, 10, 0.96) 0%, rgba(1, 7, 5, 0.9) 100%);
         flex-shrink: 0;
@@ -361,6 +376,10 @@
         color: #fff2b8;
         text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
         line-height: 1.1;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 6px;
       }
 
       .brand-subtitle {
@@ -370,72 +389,13 @@
         text-transform: uppercase;
         color: #d4af37;
         opacity: 0.92;
-        display: block;
       }
 
-      /* Interactive Vocabulary Unlock Tracker */
-      .vocab-tracker-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 4px 12px;
-        border-radius: 999px;
-        background: rgba(3, 16, 11, 0.85);
-        border: 1px solid rgba(212, 175, 55, 0.35);
-        font-family: var(--font-sans);
-        font-size: 0.7rem;
-        font-weight: 600;
-        color: #f7e092;
-        transition: all 0.3s ease;
-        cursor: default;
-      }
-
-      .vocab-tracker-icon {
-        color: #ffd700;
-        font-size: 0.75rem;
-      }
-
-      .vocab-tracker-count {
-        color: #ffd700;
-        font-weight: 800;
-        background: rgba(212, 175, 55, 0.16);
-        padding: 1px 6px;
-        border-radius: 4px;
-        border: 1px solid rgba(212, 175, 55, 0.35);
-      }
-
-      .vocab-tracker-bar {
-        width: 44px;
-        height: 4px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 2px;
-        overflow: hidden;
-      }
-
-      .vocab-tracker-fill {
-        height: 100%;
-        background: linear-gradient(90deg, #d4af37, #ffd700);
-        border-radius: 2px;
-        transition: width 0.3s ease;
-      }
-
-      .vocab-tracker-badge.is-completed {
-        background: linear-gradient(135deg, rgba(16, 72, 52, 0.9), rgba(13, 56, 45, 0.9));
-        border-color: #ffd700;
-        color: #fff;
-        animation: goldFlash 1.2s ease-out;
-      }
-
-      @keyframes goldFlash {
-        0% {
-          box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.8);
-        }
-        70% {
-          box-shadow: 0 0 20px 10px rgba(255, 215, 0, 0);
-        }
-        100% {
-          box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
-        }
+      .brand-divider {
+        color: var(--gold);
+        opacity: 0.7;
+        font-weight: 400;
+        margin: 0 4px;
       }
 
       /* ============================================================== */
@@ -445,7 +405,7 @@
         position: relative;
         z-index: 20;
         flex: 1;
-        height: calc(100vh - 82px); /* Fit to screen perfectly */
+        height: calc(100dvh - 82px); /* Fit to screen perfectly */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -594,7 +554,7 @@
       }
 
       /* ============================================================== */
-      /* 3. 4 CASCADING STORYBOOK 3D LEAVES (DOUBLE-SIDED)              */
+      /* 8 CASCADING STORYBOOK 3D LEAVES (SHREK / FAIRY-TALE FOLIO)     */
       /* ============================================================== */
       .book-leaf {
         position: absolute;
@@ -603,13 +563,19 @@
         transform-style: preserve-3d;
         transform: translate3d(0, 0, 0);
         will-change: transform;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
         border-radius: 4px 14px 14px 4px;
+        box-shadow:
+          10px 8px 28px rgba(0, 0, 0, 0.55),
+          inset -18px 0 28px rgba(40, 24, 4, 0.18);
       }
 
       .leaf-face {
         position: absolute;
         inset: 0;
         backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
         transform-style: preserve-3d;
         overflow: hidden;
         border-radius: 4px 14px 14px 4px;
@@ -626,56 +592,110 @@
         border-radius: 14px 4px 4px 14px;
       }
 
-      /* Staggered Storybook Flip Timing (~2.4s total) */
-      .leaf-cover {
+      /* Sequential wave: 0s → 0.84s, enchanted overshoot easing */
+      .leaf-0 {
         z-index: 50;
-        transition: transform 2.2s cubic-bezier(0.22, 1, 0.36, 1) 0s;
+        transform: translate3d(0, 0, 8px);
+        transition: transform 1.28s cubic-bezier(0.15, 0.85, 0.35, 1.2) 0s;
       }
-      .book-journal.is-open .leaf-cover {
-        transform: rotateY(-180deg) translate3d(0, 0, 0);
-        pointer-events: none;
+      .leaf-1 {
+        z-index: 49;
+        transform: translate3d(0, 0, 7px);
+        transition: transform 1.28s cubic-bezier(0.15, 0.85, 0.35, 1.2) 0.12s;
       }
-
-      .leaf-page-1 {
+      .leaf-2 {
+        z-index: 48;
+        transform: translate3d(0, 0, 6px);
+        transition: transform 1.28s cubic-bezier(0.15, 0.85, 0.35, 1.2) 0.24s;
+      }
+      .leaf-3 {
+        z-index: 47;
+        transform: translate3d(0, 0, 5px);
+        transition: transform 1.28s cubic-bezier(0.15, 0.85, 0.35, 1.2) 0.36s;
+      }
+      .leaf-4 {
+        z-index: 46;
+        transform: translate3d(0, 0, 4px);
+        transition: transform 1.28s cubic-bezier(0.15, 0.85, 0.35, 1.2) 0.48s;
+      }
+      .leaf-5 {
         z-index: 45;
-        transition: transform 2.2s cubic-bezier(0.22, 1, 0.36, 1) 0.25s;
+        transform: translate3d(0, 0, 3px);
+        transition: transform 1.28s cubic-bezier(0.15, 0.85, 0.35, 1.2) 0.6s;
       }
-      .book-journal.is-open .leaf-page-1 {
-        transform: rotateY(-180deg) translate3d(0, 0, 0);
+      .leaf-6 {
+        z-index: 44;
+        transform: translate3d(0, 0, 2px);
+        transition: transform 1.28s cubic-bezier(0.15, 0.85, 0.35, 1.2) 0.72s;
+      }
+      .leaf-7 {
+        z-index: 43;
+        transform: translate3d(0, 0, 1px);
+        transition: transform 1.28s cubic-bezier(0.15, 0.85, 0.35, 1.2) 0.84s;
+      }
+
+      .book-journal.is-open .leaf-0 {
+        transform: rotateY(-180deg) translate3d(0, 0, 8px);
+        pointer-events: none;
+      }
+      .book-journal.is-open .leaf-1 {
+        transform: rotateY(-180deg) translate3d(0, 0, 7px);
+        pointer-events: none;
+      }
+      .book-journal.is-open .leaf-2 {
+        transform: rotateY(-180deg) translate3d(0, 0, 6px);
+        pointer-events: none;
+      }
+      .book-journal.is-open .leaf-3 {
+        transform: rotateY(-180deg) translate3d(0, 0, 5px);
+        pointer-events: none;
+      }
+      .book-journal.is-open .leaf-4 {
+        transform: rotateY(-180deg) translate3d(0, 0, 4px);
+        pointer-events: none;
+      }
+      .book-journal.is-open .leaf-5 {
+        transform: rotateY(-180deg) translate3d(0, 0, 3px);
+        pointer-events: none;
+      }
+      .book-journal.is-open .leaf-6 {
+        transform: rotateY(-180deg) translate3d(0, 0, 2px);
+        pointer-events: none;
+      }
+      .book-journal.is-open .leaf-7 {
+        transform: rotateY(-180deg) translate3d(0, 0, 1px);
         pointer-events: none;
       }
 
-      .leaf-page-2 {
-        z-index: 40;
-        transition: transform 2.2s cubic-bezier(0.22, 1, 0.36, 1) 0.5s;
-      }
-      .book-journal.is-open .leaf-page-2 {
-        transform: rotateY(-180deg) translate3d(0, 0, 0);
-        pointer-events: none;
-      }
-
-      .leaf-page-3 {
-        z-index: 35;
-        transition: transform 2.2s cubic-bezier(0.22, 1, 0.36, 1) 0.75s;
-      }
-      .book-journal.is-open .leaf-page-3 {
-        transform: rotateY(-180deg) translate3d(0, 0, 0);
-        pointer-events: none;
-      }
-
-      /* Paper-Curling & Soft Lighting Sheen */
+      /* Paper-curl gradients + vintage folio shadows */
       .page-flip-curl {
         position: absolute;
         inset: 0;
         pointer-events: none;
+        z-index: 4;
+        background:
+          linear-gradient(
+            90deg,
+            rgba(18, 10, 2, 0.42) 0%,
+            rgba(255, 236, 190, 0.28) 12%,
+            rgba(255, 255, 255, 0.08) 28%,
+            transparent 48%,
+            rgba(70, 42, 8, 0.16) 78%,
+            rgba(12, 8, 2, 0.32) 100%
+          ),
+          radial-gradient(ellipse 40% 80% at 8% 50%, rgba(0, 0, 0, 0.28), transparent 70%);
+        mix-blend-mode: multiply;
+        opacity: 0.9;
+      }
+
+      .leaf-face-back .page-flip-curl {
         background: linear-gradient(
-          90deg,
-          rgba(0, 0, 0, 0.28) 0%,
-          rgba(255, 255, 255, 0.12) 20%,
-          transparent 45%,
-          rgba(0, 0, 0, 0.18) 100%
+          270deg,
+          rgba(18, 10, 2, 0.4) 0%,
+          rgba(255, 236, 190, 0.22) 14%,
+          transparent 42%,
+          rgba(12, 8, 2, 0.28) 100%
         );
-        opacity: 0.85;
       }
 
       /* ============================================================== */
@@ -1035,8 +1055,8 @@
         will-change: transform, opacity;
         pointer-events: none;
         transition:
-          opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.1s,
-          transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.1s;
+          opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1) 1.55s,
+          transform 0.75s cubic-bezier(0.22, 1, 0.36, 1) 1.55s;
       }
 
       .book-journal.is-open .journal-dashboard {
@@ -1065,6 +1085,36 @@
         justify-content: space-between;
         position: relative;
         overflow: hidden; /* STRICT NO-SCROLL */
+      }
+
+      /* Ambient 1962 Cadillac dome-light spotlight (GPU-composited) */
+      .vintage-lamp-spotlight {
+        position: absolute;
+        width: 460px;
+        height: 460px;
+        left: 0;
+        top: 0;
+        margin-left: -230px;
+        margin-top: -230px;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 36;
+        opacity: 0;
+        background: radial-gradient(
+          circle,
+          rgba(255, 224, 140, 0.32) 0%,
+          rgba(212, 175, 55, 0.12) 36%,
+          rgba(212, 175, 55, 0.04) 58%,
+          transparent 72%
+        );
+        mix-blend-mode: soft-light;
+        transform: translate3d(50vw, 30vh, 0);
+        will-change: transform, opacity;
+        transition: opacity 0.45s ease;
+      }
+
+      .book-journal.is-open .vintage-lamp-spotlight {
+        opacity: 1;
       }
 
       /* Ornate Brass Corner Brackets */
@@ -1274,6 +1324,30 @@
         font-size: 1.15rem;
         font-weight: 700;
         color: #fff4d1;
+        min-height: 1.35em;
+        letter-spacing: 0.01em;
+      }
+
+      .slide-title.is-typing::after {
+        content: '▍';
+        color: #ffd700;
+        margin-left: 2px;
+        animation: typeCaret 0.62s steps(1) infinite;
+      }
+
+      .slide-title .gold-ink {
+        background: linear-gradient(180deg, #fff8d6 0%, #ffd700 48%, #d4af37 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: none;
+        filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.28));
+      }
+
+      @keyframes typeCaret {
+        50% {
+          opacity: 0;
+        }
       }
 
       .slide-chip {
@@ -1304,25 +1378,53 @@
         overflow: hidden;
         border-radius: 8px;
         border: 1.5px solid rgba(212, 175, 55, 0.55);
-        background: #020a06;
+        background: #030d09;
         box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
         display: flex;
         align-items: center;
         justify-content: center;
         padding: 4px;
-        flex-shrink: 1; /* Разрешаем сжиматься, если не хватает места */
-        max-height: 100vh;
+        flex-shrink: 0;
+        width: 100%;
       }
 
       .vintage-photo-frame img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
+        object-position: center;
+        background: #030d09;
         display: block;
         transform: translate3d(0, 0, 0);
         will-change: transform;
         filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.55));
         transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      .frame-overview {
+        aspect-ratio: 21 / 9;
+        max-height: 300px;
+        height: auto;
+      }
+
+      .frame-protagonist {
+        aspect-ratio: 16 / 10;
+        width: 100%;
+        height: auto;
+        min-height: 160px;
+      }
+
+      .frame-scene {
+        aspect-ratio: 16 / 9;
+        width: 100%;
+        height: auto;
+      }
+
+      .frame-cinematic {
+        aspect-ratio: 21 / 9;
+        width: 100%;
+        height: auto;
+        max-height: 290px;
       }
 
       .vintage-photo-frame:hover img {
@@ -1572,9 +1674,10 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
-        height: 100%;
-        max-height: calc(100vh - 220px); /* Строго в пределах экрана */
+        flex: 1;
+        min-height: 0;
         overflow: hidden;
+        align-items: stretch;
       }
 
       .character-card {
@@ -1584,8 +1687,9 @@
         padding: 6px 10px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: flex-start;
         height: 100%;
+        min-height: 0;
         overflow: hidden;
         transition:
           border-color 0.25s ease,
@@ -1655,6 +1759,10 @@
         color: #ffd700;
       }
 
+      .character-card .frame-protagonist {
+        margin-bottom: 6px;
+      }
+
       .character-traits-list {
         list-style: none;
         display: flex;
@@ -1663,6 +1771,8 @@
         font-size: 0.75rem;
         line-height: 1.35;
         color: #f3efe6;
+        overflow: hidden;
+        min-height: 0;
       }
 
       .character-traits-list li {
@@ -1694,21 +1804,23 @@
       .scenes-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-        margin: 4px 0;
+        gap: 10px;
+        margin: 6px 0;
         flex: 1;
-        max-height: calc(100vh - 240px);
+        min-height: 0;
         overflow: hidden;
+        align-items: stretch;
       }
 
       .scene-card {
         background: rgba(4, 16, 11, 0.75);
         border: 1px solid rgba(212, 175, 55, 0.25);
         border-radius: 8px;
-        padding: 6px;
+        padding: 6px 8px 8px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: flex-start;
+        min-width: 0;
       }
 
       .scene-heading {
@@ -1877,6 +1989,20 @@
       /* ============================================================== */
       /* RESPONSIVE DESIGN (FIT-TO-SCREEN ON ALL VIEWPORTS)             */
       /* ============================================================== */
+      @media (prefers-reduced-motion: reduce) {
+        .film-grain-overlay,
+        .passing-streetlights,
+        .pulse-dot {
+          animation: none !important;
+        }
+        .book-leaf,
+        .book-journal,
+        .journal-dashboard {
+          transition-duration: 0.01ms !important;
+          transition-delay: 0s !important;
+        }
+      }
+
       @media (max-width: 900px) {
         .protagonists-grid,
         .scenes-grid {
@@ -1897,9 +2023,6 @@
         }
         .brand-subtitle {
           font-size: 0.55rem;
-        }
-        .vocab-tracker-badge span:not(.vocab-tracker-count) {
-          display: none;
         }
         .cover-title {
           font-size: 1.55rem;
@@ -1941,7 +2064,10 @@
         loop
         muted
         playsinline
+        preload="none"
         poster="img/scene-car.jpg"
+        width="1920"
+        height="1080"
       >
         <source src="img/car-ride.mp4" type="video/mp4" />
       </video>
@@ -2012,35 +2138,21 @@
     </div>
 
     <!-- ============================================================== -->
-    <!-- TOP CINEMA HEADER WITH VOCABULARY UNLOCK TRACKER               -->
+    <!-- TOP CINEMA HEADER (TITLE ONLY)                                 -->
     <!-- ============================================================== -->
     <header class="cinema-header">
       <div class="brand-wrap">
         <div class="brand-emblem" title="1962 Cadillac Road Tour Emblem">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path
               d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm0 2.18l6 2.25v4.66c0 4.09-2.67 7.9-6 8.88-3.33-.98-6-4.79-6-8.88V6.43l6-2.25z"
             />
           </svg>
         </div>
-        <div>
-          <h1 class="brand-title">THE GREEN BOOK</h1>
-          <span class="brand-subtitle">1962 Deep South Tour • Academic Film Archive</span>
-        </div>
-      </div>
-
-      <!-- Interactive Vocabulary Unlock Tracker -->
-      <div
-        class="vocab-tracker-badge"
-        id="vocab-tracker-badge"
-        title="Hover over vocabulary tags to unlock terms"
-      >
-        <span class="vocab-tracker-icon">✦</span>
-        <span class="vocab-tracker-label">Vocabulary Explored:</span>
-        <span id="vocab-tracker-count" class="vocab-tracker-count">0/35</span>
-        <div class="vocab-tracker-bar">
-          <div id="vocab-tracker-fill" class="vocab-tracker-fill" style="width: 0%"></div>
-        </div>
+        <h1 class="brand-title">
+          THE GREEN BOOK <span class="brand-divider">|</span>
+          <span class="brand-subtitle">1962 Deep South Tour</span>
+        </h1>
       </div>
     </header>
 
@@ -2073,8 +2185,8 @@
         <!-- 3. CASCADING 3D LEAVES (STORYBOOK SEQUENTIAL MULTI-PAGE FLIPS) -->
         <!-- ============================================================== -->
 
-        <!-- LEAF 3: Cadillac DeVille Dossier & Chauffeur Code -->
-        <div class="book-leaf leaf-page-3" aria-hidden="true">
+        <!-- LEAF 7: Cadillac DeVille Dossier & Chauffeur Code -->
+        <div class="book-leaf leaf-7" aria-hidden="true">
           <div
             class="leaf-face leaf-face-front"
             style="background: #f2e9d5; border: 1px solid #cebf9e"
@@ -2108,6 +2220,7 @@
             class="leaf-face leaf-face-back"
             style="background: #eee3cb; border: 1px solid #c9b996"
           >
+            <div class="page-flip-curl"></div>
             <div class="parchment-page-body">
               <div>
                 <span class="parchment-chapter-tag" style="color: #6b5314"
@@ -2133,8 +2246,66 @@
           </div>
         </div>
 
-        <!-- LEAF 2: Concert Route & Virtuoso Dossier -->
-        <div class="book-leaf leaf-page-2" aria-hidden="true">
+        <!-- LEAF 6: Copacabana & Bronx Ledger -->
+        <div class="book-leaf leaf-6" aria-hidden="true">
+          <div
+            class="leaf-face leaf-face-front"
+            style="background: #f4ead6; border: 1px solid #d0c09c"
+          >
+            <div class="page-flip-curl"></div>
+            <div class="parchment-page-body">
+              <div>
+                <span class="parchment-chapter-tag">Bronx Ledger • Page VI</span>
+                <h3 class="parchment-page-title">The Copacabana Bouncer</h3>
+                <div class="parchment-text">
+                  <p style="margin-bottom: 6px">
+                    "Before the highway, there was the nightclub door. Tony Lip kept order at the
+                    Copacabana with a handshake, a stare, and a hundred-percent heart."
+                  </p>
+                  <div class="parchment-callout-box">
+                    <strong>Origin:</strong> Belmont, The Bronx • Italian working-class grit.<br />
+                    <strong>Skill:</strong> Reading a room faster than a menu.
+                  </div>
+                </div>
+              </div>
+              <div class="parchment-footer-row">
+                <span>Nightclub Clearance</span>
+                <span>Vallelonga Household</span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="leaf-face leaf-face-back"
+            style="background: #efe4cc; border: 1px solid #cbbba0"
+          >
+            <div class="page-flip-curl"></div>
+            <div class="parchment-page-body">
+              <div>
+                <span class="parchment-chapter-tag" style="color: #6b5314"
+                  >Family Dispatch • Page VII</span
+                >
+                <h3 class="parchment-page-title" style="color: #120c05">Letters Home to Dolores</h3>
+                <div class="parchment-text">
+                  <p style="margin-bottom: 6px">
+                    "Every mile south, Tony writes as if the Cadillac itself were a post office.
+                    Ghostwritten tenderness becomes the first true language between two strangers."
+                  </p>
+                  <div class="parchment-callout-box">
+                    <strong>Rule:</strong> Mail before sundown. Never skip a night without a word
+                    home.
+                  </div>
+                </div>
+              </div>
+              <div class="parchment-footer-row">
+                <span>Confidential Affection</span>
+                <span>Bronx Return Address</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LEAF 5: Concert Route & Virtuoso Dossier -->
+        <div class="book-leaf leaf-5" aria-hidden="true">
           <div
             class="leaf-face leaf-face-front"
             style="background: #f6efe0; border: 1px solid #d4c5a9"
@@ -2169,6 +2340,7 @@
             class="leaf-face leaf-face-back"
             style="background: #efe6d3; border: 1px solid #ccbc9d"
           >
+            <div class="page-flip-curl"></div>
             <div class="parchment-page-body">
               <div>
                 <span class="parchment-chapter-tag" style="color: #6b5314"
@@ -2193,8 +2365,69 @@
           </div>
         </div>
 
-        <!-- LEAF 1: Historical Dedication & Green Book Origins -->
-        <div class="book-leaf leaf-page-1" aria-hidden="true">
+        <!-- LEAF 4: Jim Crow Highway Statutes -->
+        <div class="book-leaf leaf-4" aria-hidden="true">
+          <div
+            class="leaf-face leaf-face-front"
+            style="background: #f3e8d0; border: 1px solid #d2c2a4"
+          >
+            <div class="page-flip-curl"></div>
+            <div class="parchment-page-body">
+              <div>
+                <span class="parchment-chapter-tag">Statute Ledger • Page VIII</span>
+                <h3 class="parchment-page-title">Jim Crow Road Law</h3>
+                <div class="parchment-text">
+                  <p style="margin-bottom: 6px">
+                    "The map looks continuous. The law does not. Counties change like weather:
+                    restrooms, hotels, and even gasoline become a matter of survival."
+                  </p>
+                  <div
+                    class="parchment-callout-box"
+                    style="background: rgba(185, 28, 28, 0.08); border-left: 3px solid #b91c1c"
+                  >
+                    <strong>Standing Order:</strong> Do not argue with a badge after dusk. Record
+                    every refusal in this folio.
+                  </div>
+                </div>
+              </div>
+              <div class="parchment-footer-row">
+                <span>Civil Rights Field Notes</span>
+                <span>Deep South 1962</span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="leaf-face leaf-face-back"
+            style="background: #efe3c8; border: 1px solid #c9b894"
+          >
+            <div class="page-flip-curl"></div>
+            <div class="parchment-page-body">
+              <div>
+                <span class="parchment-chapter-tag" style="color: #6b5314"
+                  >Safe-Haven Index • Page IX</span
+                >
+                <h3 class="parchment-page-title" style="color: #120c05">Where the Door Opens</h3>
+                <div class="parchment-text">
+                  <p style="margin-bottom: 6px">
+                    "A Green Book listing is not a luxury. It is a porch light left on in a country
+                    that otherwise goes dark."
+                  </p>
+                  <div class="parchment-callout-box">
+                    YMCA lodges, Black-owned boarding houses, and verified diners — the only
+                    architecture of dignity on this tour.
+                  </div>
+                </div>
+              </div>
+              <div class="parchment-footer-row">
+                <span>Victor H. Green Index</span>
+                <span>Verified Stops</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LEAF 3: Historical Dedication & Green Book Origins -->
+        <div class="book-leaf leaf-3" aria-hidden="true">
           <div
             class="leaf-face leaf-face-front"
             style="background: #fbf7ee; border: 1px solid #d9ccb2"
@@ -2228,6 +2461,7 @@
             class="leaf-face leaf-face-back"
             style="background: #f4ecdc; border: 1px solid #cfbe9f"
           >
+            <div class="page-flip-curl"></div>
             <div class="parchment-page-body">
               <div>
                 <span class="parchment-chapter-tag" style="color: #8c6a18"
@@ -2258,8 +2492,123 @@
           </div>
         </div>
 
+        <!-- LEAF 2: Orange Bird & Dignity -->
+        <div class="book-leaf leaf-2" aria-hidden="true">
+          <div
+            class="leaf-face leaf-face-front"
+            style="background: #f7f0e2; border: 1px solid #d6c7ab"
+          >
+            <div class="page-flip-curl"></div>
+            <div class="parchment-page-body">
+              <div>
+                <span class="parchment-chapter-tag">Performance Rider • Page X</span>
+                <h3 class="parchment-page-title">The Orange Bird Clause</h3>
+                <div class="parchment-text">
+                  <p style="margin-bottom: 6px">
+                    "They will applaud the hands on the Steinway, then refuse those same hands a
+                    table. Art is welcomed. The artist is not."
+                  </p>
+                  <div class="parchment-callout-box">
+                    <strong>Dignity Protocol:</strong> Leave the hall standing. Never accept a back
+                    door as a compliment.
+                  </div>
+                </div>
+              </div>
+              <div class="parchment-footer-row">
+                <span>Concert Ethics</span>
+                <span>Shirley Trio Rider</span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="leaf-face leaf-face-back"
+            style="background: #f1e6d0; border: 1px solid #ccbca0"
+          >
+            <div class="page-flip-curl"></div>
+            <div class="parchment-page-body">
+              <div>
+                <span class="parchment-chapter-tag" style="color: #6b5314"
+                  >Friendship Codex • Page XI</span
+                >
+                <h3 class="parchment-page-title" style="color: #120c05">Two Men, One Highway</h3>
+                <div class="parchment-text">
+                  <p style="margin-bottom: 6px">
+                    "The tour does not merely move south. It rearranges two lives until loyalty
+                    becomes louder than prejudice."
+                  </p>
+                  <div class="parchment-callout-box" style="background: rgba(16, 72, 52, 0.12)">
+                    Brotherhood is not declared. It is forged in rain, fried chicken, and the
+                    decision to stay.
+                  </div>
+                </div>
+              </div>
+              <div class="parchment-footer-row">
+                <span>Field Observation</span>
+                <span>Confidential</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LEAF 1: Dedication Flyleaf -->
+        <div class="book-leaf leaf-1" aria-hidden="true">
+          <div
+            class="leaf-face leaf-face-front"
+            style="background: #f5ecda; border: 1px solid #d8c9b0"
+          >
+            <div class="page-flip-curl"></div>
+            <div class="parchment-page-body">
+              <div>
+                <span class="parchment-chapter-tag">Flyleaf • Page I</span>
+                <h3 class="parchment-page-title">This Volume Is Dedicated</h3>
+                <div class="parchment-text">
+                  <p style="margin-bottom: 6px">
+                    "To every traveler who needed a book to tell them where they were allowed to
+                    sleep, eat, and remain human after sunset."
+                  </p>
+                  <div class="parchment-callout-box">
+                    An academic film study of Peter Farrelly's <em>Green Book</em> — presented as a
+                    1962 road folio from the rear seat of a Cadillac DeVille.
+                  </div>
+                </div>
+              </div>
+              <div class="parchment-footer-row">
+                <span>Presentation Copy</span>
+                <span>Turn the remaining leaves</span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="leaf-face leaf-face-back"
+            style="background: #efe6d2; border: 1px solid #d0c0a4"
+          >
+            <div class="page-flip-curl"></div>
+            <div class="parchment-page-body">
+              <div>
+                <span class="parchment-chapter-tag" style="color: #6b5314">Endpaper Motto</span>
+                <h3 class="parchment-page-title" style="color: #120c05">
+                  Vacation Without Aggravation
+                </h3>
+                <div class="parchment-text">
+                  <p style="margin-bottom: 6px">
+                    "The slogan is hopeful. The highway is not. Read slowly. The dashboard waits
+                    beneath these pages."
+                  </p>
+                  <div class="parchment-callout-box">
+                    Eight leaves. One tour. Open the folio to begin the cinematic dossier.
+                  </div>
+                </div>
+              </div>
+              <div class="parchment-footer-row">
+                <span>Harlem Press Echo</span>
+                <span>1962 Edition</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- LEAF 0: FRONT COVER (CLEANED UP: FULL-BLEED TEXTURE, NO NESTED BOXES) -->
-        <div id="leaf-cover" class="book-leaf leaf-cover">
+        <div id="leaf-cover" class="book-leaf leaf-0">
           <!-- FRONT COVER FACE -->
           <div class="leaf-face leaf-face-front cover-front-face">
             <!-- Clean Full-Bleed Background Texture (Spanning entire cover face) -->
@@ -2271,6 +2620,7 @@
                 width="1024"
                 height="572"
                 fetchpriority="high"
+                loading="eager"
                 decoding="async"
                 onerror="
                   this.src = 'img/book-cover.png';
@@ -2319,9 +2669,7 @@
               <div class="cover-footer">
                 <span style="display: flex; align-items: center; gap: 6px">
                   <span class="pulse-dot"></span>
-                  <span>✦ Click to Open Magical Storybook ✦</span>
                 </span>
-                <span style="color: #fff2b8; font-weight: 700">3 Academy Awards 🏆</span>
               </div>
             </div>
           </div>
@@ -2389,7 +2737,12 @@
         <!-- 1. CLEANED UP OPENED INTERIOR JOURNAL DASHBOARD                -->
         <!-- ============================================================== -->
         <div id="journal-dashboard" class="journal-dashboard">
-          <div class="journal-case">
+          <div class="journal-case" id="journal-case">
+            <div
+              class="vintage-lamp-spotlight"
+              id="vintage-lamp-spotlight"
+              aria-hidden="true"
+            ></div>
             <div class="brass-corner brass-tl"></div>
             <div class="brass-corner brass-tr"></div>
             <div class="brass-corner brass-bl"></div>
@@ -2475,21 +2828,21 @@
                 <div class="slide-header-strip">
                   <div>
                     <span class="chapter-label">Chapter 01</span>
-                    <h3 class="slide-title">The Story & Atmosphere</h3>
+                    <h3 class="slide-title" data-full-title="The Story & Atmosphere">
+                      The Story & Atmosphere
+                    </h3>
                   </div>
                   <span class="slide-chip">Setting: Fall 1962</span>
                 </div>
 
                 <!-- High-Impact Panoramic Banner (FULL UNCROPPED, SPACIOUS) -->
-                <div
-                  class="vintage-photo-frame"
-                  style="height: clamp(200px, 30vh, 260px); width: 100%"
-                >
+                <div class="vintage-photo-frame frame-overview">
                   <img
                     src="img/scene-car.jpg"
                     alt="1962 Turquoise Cadillac DeVille Highway Tour"
                     width="1320"
                     height="880"
+                    style="object-fit: cover"
                     loading="lazy"
                     decoding="async"
                     onerror="
@@ -2583,7 +2936,9 @@
                 <div class="slide-header-strip">
                   <div>
                     <span class="chapter-label">Chapter 02</span>
-                    <h3 class="slide-title">Protagonists: Tony vs. Don</h3>
+                    <h3 class="slide-title" data-full-title="Protagonists: Tony vs. Don">
+                      Protagonists: Tony vs. Don
+                    </h3>
                   </div>
                   <span class="slide-chip">Character Contrast</span>
                 </div>
@@ -2592,15 +2947,12 @@
                 <div class="protagonists-grid">
                   <!-- PROTAGONIST 1: TONY LIP -->
                   <div class="character-card">
-                    <div
-                      class="vintage-photo-frame"
-                      style="height: clamp(200px, 30vh, 260px); width: 100%"
-                    >
+                    <div class="vintage-photo-frame frame-protagonist">
                       <img
                         src="img/tony.jpg"
                         alt="Tony Lip played by Viggo Mortensen"
                         width="573"
-                        height="574"
+                        height="360"
                         loading="lazy"
                         decoding="async"
                         onerror="
@@ -2665,15 +3017,12 @@
 
                   <!-- PROTAGONIST 2: DR. DON SHIRLEY -->
                   <div class="character-card">
-                    <div
-                      class="vintage-photo-frame"
-                      style="height: clamp(200px, 30vh, 260px); width: 100%"
-                    >
+                    <div class="vintage-photo-frame frame-protagonist">
                       <img
                         src="img/don.jpg"
                         alt="Dr. Donald Shirley played by Mahershala Ali"
                         width="712"
-                        height="1076"
+                        height="445"
                         loading="lazy"
                         decoding="async"
                         onerror="
@@ -2764,7 +3113,9 @@
                 <div class="slide-header-strip">
                   <div>
                     <span class="chapter-label">Chapter 03</span>
-                    <h3 class="slide-title">How They Shape Each Other's Behavior</h3>
+                    <h3 class="slide-title" data-full-title="How They Shape Each Other's Behavior">
+                      How They Shape Each Other's Behavior
+                    </h3>
                   </div>
                   <span class="slide-chip">Dynamic Evolution</span>
                 </div>
@@ -2808,15 +3159,12 @@
                 <div class="scenes-grid">
                   <!-- Scene 1: Fried Chicken Breakthrough -->
                   <div class="scene-card">
-                    <div
-                      class="vintage-photo-frame"
-                      style="height: clamp(200px, 30vh, 260px); width: 100%"
-                    >
+                    <div class="vintage-photo-frame frame-scene">
                       <img
                         src="img/scene1.jpg"
                         alt="The Fried Chicken Car Scene"
                         width="1320"
-                        height="880"
+                        height="743"
                         loading="lazy"
                         decoding="async"
                         onerror="
@@ -2837,12 +3185,12 @@
 
                   <!-- Scene 2: Rainstorm Confrontation -->
                   <div class="scene-card">
-                    <div class="vintage-photo-frame" style="height: 150px; width: 100%">
+                    <div class="vintage-photo-frame frame-scene">
                       <img
                         src="img/scene2.jpg"
                         alt="The Torrential Rainstorm Breakdown"
-                        width="480"
-                        height="297"
+                        width="1280"
+                        height="720"
                         loading="lazy"
                         decoding="async"
                         onerror="
@@ -2895,18 +3243,21 @@
                 <div class="slide-header-strip">
                   <div>
                     <span class="chapter-label">Chapter 04</span>
-                    <h3 class="slide-title">Critical Verdict & Recommendation</h3>
+                    <h3 class="slide-title" data-full-title="Critical Verdict & Recommendation">
+                      Critical Verdict & Recommendation
+                    </h3>
                   </div>
                   <span class="slide-chip">Why You Must Watch It</span>
                 </div>
 
                 <!-- Closing Finale Still (FULL UNCROPPED) -->
-                <div class="vintage-photo-frame" style="height: 150px; width: 100%">
+                <div class="vintage-photo-frame frame-cinematic">
                   <img
                     src="img/concert.jpg"
                     alt="Dr. Don Shirley Jazz Performance at the Orange Bird"
-                    width="480"
-                    height="297"
+                    width="1680"
+                    height="720"
+                    style="height: fit-content"
                     loading="lazy"
                     decoding="async"
                     onerror="
@@ -3021,10 +3372,7 @@
 
     <!-- Bottom Cinema Footer -->
     <footer class="cinema-footer">
-      <span
-        >The Green Book (1962) • Deep South Road Tour Archive • 60+ FPS Hardware Accelerated • Zero
-        Audio Overhead</span
-      >
+      <span>The Green Book (1962) • Deep South Road Tour Archive • </span>
     </footer>
 
     <!-- ============================================================== -->
@@ -3370,7 +3718,6 @@
       let isOpen = false;
       let activeSlide = 1;
       const totalSlides = 4;
-      const TOTAL_VOCAB_TARGET = 35;
       const discoveredVocab = new Set();
 
       const slideTitles = {
@@ -3387,11 +3734,8 @@
       const slideTrackerPill = document.getElementById('slide-tracker-pill');
       const slideProgressLine = document.getElementById('slide-progress-line');
       const cadillacVideo = document.getElementById('cadillac-video');
-
-      // Gamification Vocab Tracker Elements
-      const vocabTrackerBadge = document.getElementById('vocab-tracker-badge');
-      const vocabTrackerCount = document.getElementById('vocab-tracker-count');
-      const vocabTrackerFill = document.getElementById('vocab-tracker-fill');
+      const journalCase = document.getElementById('journal-case');
+      const vintageLamp = document.getElementById('vintage-lamp-spotlight');
 
       // Tooltip Elements
       const tooltipModal = document.getElementById('vocab-tooltip-modal');
@@ -3407,9 +3751,19 @@
       function initCadillacVideo() {
         if (!cadillacVideo) return;
         cadillacVideo.muted = true;
-        const playPromise = cadillacVideo.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(() => {});
+        const loadAndPlay = () => {
+          if (cadillacVideo.getAttribute('preload') === 'none') {
+            cadillacVideo.setAttribute('preload', 'metadata');
+          }
+          const playPromise = cadillacVideo.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(() => {});
+          }
+        };
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(loadAndPlay, { timeout: 2200 });
+        } else {
+          window.setTimeout(loadAndPlay, 700);
         }
       }
 
@@ -3423,6 +3777,7 @@
           bookJournal.classList.add('is-open');
           bookJournal.style.transform =
             'rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate3d(0, 0, 0)';
+          window.setTimeout(() => typeChapterTitle(activeSlide), 1650);
         } else {
           bookJournal.classList.remove('is-open');
           bookJournal.style.transform =
@@ -3489,6 +3844,39 @@
         slideIndicator.textContent = `Slide ${num} of ${totalSlides}: ${slideTitles[num]}`;
         slideTrackerPill.textContent = `Slide ${num} of ${totalSlides}`;
         slideProgressLine.style.width = `${(num / totalSlides) * 100}%`;
+        typeChapterTitle(num);
+      }
+
+      // ==============================================================
+      // HISTORICAL TYPEWRITER — CHAPTER TITLES
+      // ==============================================================
+      let typewriterTimer = 0;
+      let typewriterToken = 0;
+
+      function typeChapterTitle(slideNum) {
+        const view = document.getElementById(`slide-view-${slideNum}`);
+        const el = view && view.querySelector('.slide-title');
+        if (!el) return;
+
+        const full = el.getAttribute('data-full-title') || el.textContent.trim();
+        el.setAttribute('data-full-title', full);
+        const token = ++typewriterToken;
+        window.clearTimeout(typewriterTimer);
+        el.classList.add('is-typing');
+        el.innerHTML = '';
+
+        let i = 0;
+        const tick = () => {
+          if (token !== typewriterToken) return;
+          i += 1;
+          el.innerHTML = `<span class="gold-ink">${full.slice(0, i)}</span>`;
+          if (i < full.length) {
+            typewriterTimer = window.setTimeout(tick, 16);
+          } else {
+            el.classList.remove('is-typing');
+          }
+        };
+        tick();
       }
 
       function navigateSlide(direction) {
@@ -3502,22 +3890,7 @@
       // 5. VOCABULARY UNLOCK TRACKER (GAMIFICATION ENGINE)
       // ==============================================================
       function trackVocabExplored(key) {
-        if (!discoveredVocab.has(key)) {
-          discoveredVocab.add(key);
-          const count = discoveredVocab.size;
-          const displayCount = Math.min(count, TOTAL_VOCAB_TARGET);
-
-          vocabTrackerCount.textContent = `${displayCount}/${TOTAL_VOCAB_TARGET}`;
-          vocabTrackerFill.style.width = `${Math.min(100, (count / TOTAL_VOCAB_TARGET) * 100)}%`;
-
-          if (
-            count >= TOTAL_VOCAB_TARGET &&
-            !vocabTrackerBadge.classList.contains('is-completed')
-          ) {
-            vocabTrackerBadge.classList.add('is-completed');
-            vocabTrackerCount.textContent = `35/35 ★`;
-          }
-        }
+        if (key) discoveredVocab.add(key);
       }
 
       // ==============================================================
@@ -3602,23 +3975,36 @@
       // ==============================================================
       // 7. RELIABLE KEYBOARD SHORTCUTS & EVENT DELEGATION
       // ==============================================================
+      window.addEventListener(
+        'keydown',
+        (e) => {
+          const tag = (e.target && e.target.tagName) || '';
+          if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+
+          if (e.key === 'Escape' || e.key === 'Esc') {
+            if (isOpen) {
+              e.preventDefault();
+              e.stopPropagation();
+              toggleBook(false);
+            }
+            return;
+          }
+
+          if (e.key === 'b' || e.key === 'B') {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleBook(!isOpen);
+            return;
+          }
+        },
+        true,
+      );
+
       document.addEventListener('keydown', (e) => {
         if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
 
-        // 'B' or 'b' toggles book open/close from ANYWHERE
-        if (e.key.toLowerCase() === 'b') {
-          e.preventDefault();
-          toggleBook(!isOpen);
+        if (e.key === 'b' || e.key === 'B' || e.key === 'Escape' || e.key === 'Esc') {
           return;
-        }
-
-        // Escape closes book when open
-        if (e.key === 'Escape') {
-          if (isOpen) {
-            e.preventDefault();
-            toggleBook(false);
-            return;
-          }
         }
 
         if (!isOpen) {
@@ -3681,10 +4067,32 @@
         }
       });
 
+      function initVintageLamp() {
+        if (!journalCase || !vintageLamp) return;
+        const moveLamp = (clientX, clientY) => {
+          const rect = journalCase.getBoundingClientRect();
+          const x = clientX - rect.left;
+          const y = clientY - rect.top;
+          vintageLamp.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        };
+        journalCase.addEventListener(
+          'mousemove',
+          (e) => {
+            if (!isOpen) return;
+            moveLamp(e.clientX, e.clientY);
+          },
+          { passive: true },
+        );
+        journalCase.addEventListener('mouseenter', (e) => moveLamp(e.clientX, e.clientY), {
+          passive: true,
+        });
+      }
+
       // Auto-init on load
       window.addEventListener('DOMContentLoaded', () => {
         initCadillacVideo();
         initVocabTooltips();
+        initVintageLamp();
       });
     </script>
   </body>
